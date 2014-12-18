@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Ignorance Maps : Simple algorithms to display ignorance maps of raw distributional data accessed from species observation databases: the Swedish LifeWatch implementation">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Ignorance Maps</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/AlejandroRuete/IgnoranceMaps">View on GitHub</a>
+
+          <h1 id="project_title">Ignorance Maps</h1>
+          <h2 id="project_tagline">Simple algorithms to display ignorance maps of raw distributional data accessed from species observation databases: the Swedish LifeWatch implementation</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/AlejandroRuete/IgnoranceMaps/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/AlejandroRuete/IgnoranceMaps/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>This is an HTML interactive application compiled in R that accompanies the text:
+Simple algorithms to display ignorance maps of raw distributional data accessed from species observation databases: the Swedish LifeWatch implementation</p>
+
+<p>This interactive application exemplifies the use of three algorithms to map the ignorance (i.e. lack of sampling effort) found in the observations accessed through the Swedish LifeWatch biodiversity analysis portal.</p>
+
+<p>To run it you will need R <a href="http://www.r-project.org/">http://www.r-project.org/</a> with the following packages installed: shiny, raster, rgdal, and maptools.</p>
+
+<pre><code>   install.packages(c("shiny", "raster", "rgdal", "maptools"))
+</code></pre>
+
+<p>All data required to run this script is provided in the ZIP file. 
+The structure of this folder should be kept as is.</p>
+
+<p>Execute the following script in R to run the interactive application.</p>
+
+<pre><code>require(shiny)
+runApp("~/SLWapp") # where ~ indicates the path of the folder. To see the R code include the command ',display.mode = "showcase"'
+runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R code  
+</code></pre>
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>Application developed by Alejandro Ruete (<a href="https://github.com/aleruete" class="user-mention">@aleruete</a>) in Dec 2014.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Ignorance Maps maintained by <a href="https://github.com/AlejandroRuete">AlejandroRuete</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
