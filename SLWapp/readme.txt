@@ -16,4 +16,4 @@ Execute this script in R to run the interactive application.
 	runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R code  
 
 
-This interactive application exemplifies the use of three different algorithms to map the ignorance (i.e. lack of sampling effort) found in the observations stored in the Swediwhs Species Gateway accesses trough the Swedish LifeWatch biodiversity analysis portal.
+This interactive application exemplifies the use of three different algorithms to map the ignorance (i.e. lack of sampling effort) found in the observations accessed through the Swedish LifeWatch biodiversity analysis portal.
