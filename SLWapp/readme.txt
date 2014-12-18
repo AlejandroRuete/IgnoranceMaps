@@ -13,7 +13,7 @@ The structure of this folder should be kept as is.
 Execute the following script in R to run the interactive application.
 
 	require(shiny)
-	runApp("~/SLWapp") # where ~ indicates the path of the folder. To see the R code include the command ',display.mode = "showcase"'
+	runApp("~/SLWapp") # where ~ indicates the path of the folder.
 	runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R code  
 
 
