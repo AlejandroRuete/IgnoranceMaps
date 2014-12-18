@@ -70,7 +70,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
   wellPanel(
       strong("Visualization options"),
       sliderInput(inputId ="minAbs",
-                   label = "Minimum P.Absence certainty",
+                   label = "Minimum Ps.absence certainty",
                    value = 0.8,
                    min = 0,
                    max = 1,
