@@ -19,4 +19,8 @@ Execute the following script in R to run the interactive application.
 
 
 ### Authors and Contributors
+<<<<<<< HEAD
 Application developed by Alejandro Ruete in Dec 2014.
+=======
+Application developed by Alejandro Ruete in Dec 2014.
+>>>>>>> origin/master
