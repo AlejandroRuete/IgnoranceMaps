@@ -245,7 +245,7 @@ ignorInput <- reactive({
              spp.psabs<-sppPAInput()[[1]]
              spp.norm<-sppPAInput()[[2]]
                par(mar=c(3,4,3,5),cex=1)
-               plot(spp.psabs, col=RedBlue, main=paste("PA for",spptargetInput()[[1]]),
+               plot(spp.psabs, col=RedBlue, main=paste("Ps.absence of",spptargetInput()[[1]]),
                        zlim=c(0,1),
                        legend.width=2, legend.shrink=0.75,legend.mar=3,
                        axis.args=list(cex.axis=0.8))
@@ -255,7 +255,7 @@ ignorInput <- reactive({
                fun="prod" #alt "geomean"
                plot(1-spp.psabs, #overlay(1-spp.psabs,1-CI,fun=fun),
                        zlim=c(0,1),col=GreyColors,
-                       main= paste("P for",spptargetInput()[[1]]),#paste(ifelse(input$trans2!=2,"P x","Log(P) x"),ifelse(input$trans!=2,"Certainty for","Log(Certainty) for"),spptargetInput()[[1]]),
+                       main= paste("Presence of",spptargetInput()[[1]]),#paste(ifelse(input$trans2!=2,"P x","Log(P) x"),ifelse(input$trans!=2,"Certainty for","Log(Certainty) for"),spptargetInput()[[1]]),
                        legend.width=2, legend.shrink=0.75,legend.mar=3,
                        axis.args=list(cex.axis=0.8))
                plot(overlay(spp.psabs,1-CI,fun=fun),
@@ -263,7 +263,7 @@ ignorInput <- reactive({
                plot(overlay(1-spp.psabs,1-CI,fun=fun), #1-spp.psabs,
                             zlim=c(input$minPres,1),col="#00FF00",alpha=input$alpha,legend=FALSE, add=T)
                plot(SweB10k, add=TRUE)
-               legend("topleft", c(paste0("Certain absences (", input$minAbs," - 1)"), paste0("Certain presence (", input$minPres," - 1)")),
+               legend("topleft", c(paste0("Certain ps.absence (", input$minAbs," - 1)"), paste0("Certain presence (", input$minPres," - 1)")),
                                  col=c(paste0(c("#FF0000","#00FF00"),input$alpha * 100)),
                                  bty="n", pch= 15 )
   }) #end outputPlot

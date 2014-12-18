@@ -3,7 +3,7 @@ library(shiny)
 
 shinyUI(fluidPage(theme = "bootstrap.css",
 
-  titlePanel("Ignorance maps for observations reported in ArtDatabanken (Accessed via the Swedish LifeWatch)"),
+  titlePanel("Ignorance maps for observations accessed via the Swedish LifeWatch"),
 
   fluidRow(
     column(2,
@@ -99,7 +99,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
     tabsetPanel(
         tabPanel("Maps", plotOutput("ObsPlot")),
         tabPanel("Data plots", plotOutput("TransPlot")),
-        tabPanel("Read Me", includeHTML("data/Description.htm")
+        tabPanel("Read me", includeHTML("data/Description.htm")
                             )# end tab Read me,
       )#end tabset
   )

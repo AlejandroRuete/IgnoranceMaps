@@ -15,16 +15,16 @@ xmlns="http://www.w3.org/TR/REC-html40">
   <o:Author>Alejandro Ruete</o:Author>
   <o:LastAuthor>Alejandro Ruete</o:LastAuthor>
   <o:Revision>2</o:Revision>
-  <o:TotalTime>8</o:TotalTime>
-  <o:Created>2014-12-17T12:43:00Z</o:Created>
-  <o:LastSaved>2014-12-17T12:43:00Z</o:LastSaved>
+  <o:TotalTime>75</o:TotalTime>
+  <o:Created>2014-12-18T12:15:00Z</o:Created>
+  <o:LastSaved>2014-12-18T12:15:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
-  <o:Words>660</o:Words>
-  <o:Characters>3567</o:Characters>
+  <o:Words>749</o:Words>
+  <o:Characters>4031</o:Characters>
   <o:Company>SLU</o:Company>
-  <o:Lines>29</o:Lines>
-  <o:Paragraphs>8</o:Paragraphs>
-  <o:CharactersWithSpaces>4219</o:CharactersWithSpaces>
+  <o:Lines>33</o:Lines>
+  <o:Paragraphs>9</o:Paragraphs>
+  <o:CharactersWithSpaces>4771</o:CharactersWithSpaces>
   <o:Version>14.00</o:Version>
  </o:DocumentProperties>
  <o:OfficeDocumentSettings>
@@ -713,15 +713,16 @@ observations to the database. For each group we show examples of a common (or
 widely distributed) and a rare (or locally distributed) species. Note that in
 many cases common species are not reported as enthusiastically as more
 “interesting” species are (in Sweden, a moose is not as frequently reported as
-hedgehogs are). Therefore, one can expect that for common species the
-observations are very scattered and they do not cover the whole expected range
-of the species.</p>
+hedgehogs are). Therefore, one can expect that for common species the observations
+are very scattered and they do not cover the whole expected range of the
+species.</p>
 
-<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Tabs<o:p></o:p></b></p>
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Tabs (Maps, Data
+plots, and Read me)<o:p></o:p></b></p>
 
-<p class=MsoNormal>You are now reading under the “Read Me” tab. The data is
+<p class=MsoNormal>You are now reading under the “Read me” tab. The data is
 shown the form of “Maps” and “Data plots”. Four maps of Sweden with a
-resolution of 10 x 10 km are shown under the tab “Maps” displaying: </p>
+resolution of 10 x 10 km are plotted under the tab “Maps” displaying: </p>
 
 <p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt;mso-list:l1 level1 lfo2'><![if !supportLists]><span
 style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
@@ -738,27 +739,34 @@ style='mso-list:Ignore'>2)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp
 style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
 style='mso-list:Ignore'>3)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span></span></span><![endif]><span class=GramE>an</span> estimate of
-pseudo-absence (henceforth PA) for the selected target species. PAs are
-estimated with the same algorithms explained to produce the ignorance
-maps.<span style='mso-spacerun:yes'>  </span>However, the results have slightly
-different interpretation. For individual focal species, the lack of
-observations could represent a true absence or lack of observers. For a
-reference group the number of observations (or lack of them) are assumed to
-represent the ignorance we have for that grid cell.<span
-style='mso-spacerun:yes'>  </span></p>
+pseudo-absence (henceforth <span class=SpellE>ps.absences</span>) for the
+selected target species. <span class=SpellE>Ps.absences</span> <span
+class=GramE>are</span> estimated with the same algorithms used to produce the
+ignorance maps. Be aware that the results of the algorithms for a single
+species have a different interpretation than for a reference target group. For
+individual target species the lack of observations could represent a true
+absence or lack of observers. To separate true absences from the lack of
+observers we could weight <span class=SpellE>ps.absence</span> estimates with
+the ignorance map as it is shown in the next map. Also, be aware that
+especially for common species or species that are not likely to be reported as
+frequently as they are seen, these estimates of <span class=SpellE>ps.absences</span>
+are not reliable because the raw data is not reliable. Disclaimer: the pseudo-absence
+map is only an exercise to explore the use of the ignorance map.</p>
 
 <p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt;mso-list:l1 level1 lfo2'><![if !supportLists]><span
 style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
 style='mso-list:Ignore'>4)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span></span></span><![endif]><span class=GramE>and</span> the presence map
-(1-PA) . This is an example of the use of ignorance maps to weight and mask
-different estimates for target species. In this case, the black to white scale
-represents the knowledge on the species presence. On top, a layer multiplying
-1-ignorance (i.e. certainty) by the PA (red) or P (green) shows areas where a
-minimum certainty for PA or P is achieved after weighting. Then in red are
-shown areas where there is low ignorance but the target species has not been
-found, while in green are areas where the target species has been found but a
-minimum certainty is required. </p>
+</span></span></span><![endif]><span class=GramE>the</span> presence map (P = 1-
+<span class=SpellE>ps.absences</span>; i.e. scaled observations). This is an
+example of the use of ignorance maps to weight and mask different estimates for
+target species. In this case, the black to white scale represents the scaled
+observations or the knowledge we have on the presence of the species. On top, a
+transparent layer shows areas where a minimum certainty for <span class=SpellE>ps.absences</span>
+or presence is achieved after multiplying 1-ignorance (i.e. certainty) by the <span
+class=SpellE>ps.absences</span> (red) or presence (green). Then, areas where
+there is low ignorance but the target species has not been found are shown in
+red, while areas where the target species has been found but a minimum
+certainty is required are shown in green. </p>
 
 <p class=MsoNormal>The outline in those maps is a 10km buffer around the
 Swedish land surface. </p>
