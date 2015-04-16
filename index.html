@@ -41,14 +41,16 @@ Simple algorithms to display ignorance maps of raw distributional data accessed 
 <pre><code>  install.packages(c("shiny", "raster", "rgdal", "maptools"))
 </code></pre>
 
-<p>All data required to run this script is provided in the ZIP file. 
+<p>NOTE: there are some known issues when installing the package "rgdal" on Linux. Please, refer to this blog <a href="http://robinlovelace.net/r/2013/11/26/installing-rgdal-on-ubuntu.html">http://robinlovelace.net/r/2013/11/26/installing-rgdal-on-ubuntu.html</a> to solve the issue.</p>
+
+<p>All data required to run these scripts is provided in the ZIP file. 
 The structure of this folder should be kept as is.</p>
 
 <p>Execute the following script in R to run the interactive application.</p>
 
 <pre><code>require(shiny)
 runApp("~/SLWapp") # where ~ indicates the path of the folder.
-runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R code  
+runApp("~/SLWapp", display.mode = "showcase") # Use this command to see the R code  
 </code></pre>
 
 <h3>
@@ -62,7 +64,7 @@ runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R cod
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">Ignorance Maps maintained by <a href="https://github.com/AlejandroRuete">AlejandroRuete</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
 
