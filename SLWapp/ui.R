@@ -1,7 +1,7 @@
 ## UI ArtData
 library(shiny)
 
-shinyUI(fluidPage(theme = "bootstrap.css",
+shinyUI(fluidPage(#theme = "bootstrap.css",
 
   titlePanel("Ignorance maps for observations accessed via the Swedish LifeWatch"),
 
