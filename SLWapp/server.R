@@ -42,7 +42,7 @@ VasR <- raster("data/Vas richness.tif")
 Pan<-raster("data/Pan.tif")
 Eup<-raster("data/Eup.tif")
 
-cellwdata<-which(!is.na(Amp[]))
+#cellwdata<-which(!is.na(Amp[]))
 
 ##################
 # Shiny server function
