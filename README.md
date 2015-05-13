@@ -17,30 +17,13 @@ Please, refer to this blog <http://robinlovelace.net/r/2013/11/26/installing-rgd
 
 Execute the following script in R to run the interactive application.
 
-<<<<<<< HEAD
        require(shiny)
        shiny::runGitHub(repo="IgnoranceMaps", username="alejandroruete", subdir="SLWapp")
-=======
-	require(shiny)
-	shiny::runGitHub(repo="IgnoranceMaps", username="alejandroruete", subdir="SLWapp")
 
 Alternarively, download the files and run the following scripts.
-	runApp("~/SLWapp") # where ~ indicates the path of the folder.
-	runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R code
 
-
-
-### Authors and Contributors
-Application developed by Alejandro Ruete in Dec 2014.
-
-<p>Author: Alejandro Ruete, for the Swedish LifeWatch</p>
->>>>>>> origin/master
-
-Alternatively, download the files and run the following scripts. All data required to run this script is provided in the ZIP file.
-The structure of this folder should be kept as is.
        runApp("~/SLWapp") # where ~ indicates the path of the folder.
-       runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R code
-
+       runApp("~/SLWapp", display.mode = "showcase") # Use this command to see the R code
 
 
 ### Running the Application
@@ -122,9 +105,5 @@ where any observation number below O<sub>0.5</sub> sets the ignorance score to
 
 ### Authors and Contributors
 Application developed by Alejandro Ruete in Dec 2014.
-<<<<<<< HEAD
+
 ### Licence GNU v.3
-=======
-### Licence GNU v.3
-Application developed by Alejandro Ruete in Dec 2014.
->>>>>>> origin/master
