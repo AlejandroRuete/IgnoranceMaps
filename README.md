@@ -21,10 +21,10 @@ The structure of this folder should be kept as is.
 Execute the following script in R to run the interactive application.
 
 	require(shiny)
-  shiny::runGitHub(repo="IgnoranceMaps", username="alejandroruete", subdir="SLWapp")
+	shiny::runGitHub(repo="IgnoranceMaps", username="alejandroruete", subdir="SLWapp")
 
 Alternarively, download the files and run the following scripts.
-  runApp("~/SLWapp") # where ~ indicates the path of the folder.
+	runApp("~/SLWapp") # where ~ indicates the path of the folder.
 	runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R code
 
 
@@ -117,3 +117,8 @@ grid cell. On each subpanel you can set the algorithm can be set and O<sub>0.5</
 0.5) for the Inversed algorithm. For target species, a Step algorithm is added
 where any observation number below O<sub>0.5</sub> sets the ignorance score to
 0. Else the Step algorithm is equal to the Inversed algorithm.</p>
+
+### Authors and Contributors
+Application developed by Alejandro Ruete in Dec 2014.
+### Licence GNU v.3
+Application developed by Alejandro Ruete in Dec 2014.
