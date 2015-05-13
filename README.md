@@ -20,7 +20,7 @@ Execute the following script in R to run the interactive application.
        require(shiny)
        shiny::runGitHub(repo="IgnoranceMaps", username="alejandroruete", subdir="SLWapp")
 
-Alternarively, download the files and run the following scripts.
+Alternatively, download the files and run the following scripts.
 
        runApp("~/SLWapp") # where ~ indicates the path of the folder.
        runApp("~/SLWapp", display.mode = "showcase") # Use this command to see the R code
