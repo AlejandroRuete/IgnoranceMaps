@@ -41,22 +41,31 @@ Simple algorithms to display ignorance maps of raw distributional data accessed 
 <pre><code>  install.packages(c("shiny", "raster", "rgdal", "maptools"))
 </code></pre>
 
-<p>NOTE: there are some known issues when installing the package "rgdal" on Linux. Please, refer to this blog <a href="http://robinlovelace.net/r/2013/11/26/installing-rgdal-on-ubuntu.html">http://robinlovelace.net/r/2013/11/26/installing-rgdal-on-ubuntu.html</a> to solve the issue.</p>
-
-<p>All data required to run these scripts is provided in the ZIP file. 
-The structure of this folder should be kept as is.</p>
+<p>NOTE: there are some known issues when installing the package "rgdal" on Linux.
+Please, refer to this blog <a href="http://robinlovelace.net/r/2013/11/26/installing-rgdal-on-ubuntu.html">http://robinlovelace.net/r/2013/11/26/installing-rgdal-on-ubuntu.html</a>  or this blog <a href="https://philmikejones.wordpress.com/2014/07/14/installing-rgdal-in-r-on-linux/">https://philmikejones.wordpress.com/2014/07/14/installing-rgdal-in-r-on-linux/</a> to solve the issue.</p>
 
 <p>Execute the following script in R to run the interactive application.</p>
 
-<pre><code>require(shiny)
-runApp("~/SLWapp") # where ~ indicates the path of the folder.
-runApp("~/SLWapp", display.mode = "showcase") # Use this command to see the R code  
+<pre><code>   require(shiny)
+   shiny::runGitHub(repo="IgnoranceMaps", username="alejandroruete", subdir="SLWapp")
 </code></pre>
+
+<p>Alternatively, download the files and run the following scripts. All data required to run this script is provided in the ZIP file.The structure of this folder should be kept as is.</p>
+
+<pre><code>   runApp("~/SLWapp") # where ~ indicates the path of the folder.
+   runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R code
+</code></pre>
+
+<h3>
+<a id="running-the-application" class="anchor" href="#running-the-application" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running the Application</h3>
+
+<p>Once the application is running and you see the maps of Sweden, refer to the the Read Me tab for further explanations.</p>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>Application developed by Alejandro Ruete (<a href="https://github.com/aleruete" class="user-mention">@aleruete</a>) in Dec 2014.</p>
+<p>Application developed by Alejandro Ruete (<a href="https://github.com/aleruete" class="user-mention">@aleruete</a>) in Dec 2014.
+Licence GNU v.3</p>
       </section>
     </div>
 
