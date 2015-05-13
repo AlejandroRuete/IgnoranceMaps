@@ -1,7 +1,7 @@
-Ignorance Maps
-==============
+Simple algorithms to display ignorance maps of raw distributional data accessed from species observation databases
+=======================================================================================================================
+The Swedish LifeWatch implementation
 
-Simple algorithms to display ignorance maps of raw distributional data accessed from species observation databases: the Swedish LifeWatch implementation
 
 This is an HTML interactive application compiled in R that accompanies the text:
 Simple algorithms to display ignorance maps of raw distributional data accessed from species observation databases: the Swedish LifeWatch implementation
