@@ -4,9 +4,9 @@ The Swedish LifeWatch implementation
 
 
 This is an HTML interactive application compiled in R that accompanies the text:
-Simple algorithms to display ignorance maps of raw distributional data accessed from species observation databases: the Swedish LifeWatch implementation
+Simple algorithms to display ignorance maps of raw distributional data accessed from species observation databases
 
-This interactive application exemplifies the use of three algorithms to map the ignorance (i.e. lack of sampling effort) found in the observations accessed through the Swedish LifeWatch biodiversity analysis portal.
+This interactive application exemplifies the use of three different algorithms to map the ignorance (i.e. bias and lack of sampling effort) found in the observations accessed through the Swedish LifeWatch biodiversity analysis portal <a href="http://www.swedishlifewatch.se">www.swedishlifewatch.se</a>.
 
 To run it you will need R <http://www.r-project.org/> with the following packages installed: shiny, raster, rgdal, and maptools.
 
@@ -27,11 +27,6 @@ Alternarively, download the files and run the following scripts.
 
 
 ### Running the Application
-<p>This interactive application exemplifies the use of three
-different algorithms to map the ignorance (i.e. bias and lack of sampling
-effort) found in the observations accessed through the Swedish LifeWatch biodiversity analysis portal
-<a href="http://www.swedishlifewatch.se">www.swedishlifewatch.se</a>.</p>
-
 <p>Examples are provided for seven reference taxonomic groups
 (i.e. Amphibians, Birds, Butterflies, Land Mammals, Harvestmen, Dragonflies,
 and Vascular Plants) as groups with different sampling effort intensity and
