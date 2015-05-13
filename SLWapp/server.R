@@ -327,9 +327,11 @@ output$TransPlot <- renderPlot({
               abline(v=1, lty=3)
               abline(v=obs50, lty=3, col=2)
               abline(h=0.5, lty=3, col=2)
-              legend("topright", legend=c(paste("Normalized =",expression(1 - x/max(x))),
-                                          paste("Log-Normalized =",expression(1 - log(x + 1)/max(log(x + 1)))),
-                                          paste("Inversed =",expression(O[0.5]/(x+O[0.5])))), lty=1, col=c("black","blue","red"),bty="n")
+#              exp1<-expression(Normalized = 1 - x/ max(x),
+#                               LogNormalized = 1 - log(x+1)/max( log(x+1) ),
+#                               Inversed = O[0.5]/(x+O[0.5]))
+              legend("topright", legend=c("Normalized","Log-Normalized","Inversed"),
+                                          lty=1, col=c("black","blue","red"),bty="n")
   }) #end outputPlot
 
 }) #end server
