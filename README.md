@@ -8,7 +8,7 @@ Simple algorithms to display ignorance maps of raw distributional data accessed 
 
 This interactive application exemplifies the use of three different algorithms to map the ignorance (i.e. bias and lack of sampling effort) found in the observations accessed through the Swedish LifeWatch biodiversity analysis portal <a href="http://www.swedishlifewatch.se">www.swedishlifewatch.se</a>.
 
-To run it you will need R <http://www.r-project.org/> with the following packages installed: shiny, raster, rgdal, and maptools.
+To run it you will need to install R <http://www.r-project.org/> and install the following packages: shiny, raster, rgdal, and maptools.
 
        install.packages(c("shiny", "raster", "rgdal", "maptools"))
 
