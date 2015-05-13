@@ -15,33 +15,19 @@ To run it you will need R <http://www.r-project.org/> with the following package
 NOTE: there are some known issues when installing the package "rgdal" on Linux.
 Please, refer to this blog <http://robinlovelace.net/r/2013/11/26/installing-rgdal-on-ubuntu.html>  or this blog <https://philmikejones.wordpress.com/2014/07/14/installing-rgdal-in-r-on-linux/> to solve the issue.
 
-All data required to run this script is provided in the ZIP file.
-The structure of this folder should be kept as is.
-
 Execute the following script in R to run the interactive application.
 
-	require(shiny)
-  shiny::runGitHub(repo="IgnoranceMaps", username="alejandroruete", subdir="SLWapp")
+       require(shiny)
+       shiny::runGitHub(repo="IgnoranceMaps", username="alejandroruete", subdir="SLWapp")
 
-Alternarively, download the files and run the following scripts.
-  runApp("~/SLWapp") # where ~ indicates the path of the folder.
-	runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R code
+Alternatively, download the files and run the following scripts. All data required to run this script is provided in the ZIP file.
+The structure of this folder should be kept as is.
+       runApp("~/SLWapp") # where ~ indicates the path of the folder.
+       runApp("~/SLWapp",display.mode = "showcase") # Use this command to see the R code
 
 
 
-### Authors and Contributors
-Application developed by Alejandro Ruete in Dec 2014.
-
-<p>Author: Alejandro Ruete, for the Swedish LifeWatch</p>
-
-<p>Swedish Species Information Centre, Swedish University of Agricultural Sciences (SLU). P.O.7007, SE-750 07. Uppsala, Sweden. </p>
-
-<p>E-mail: <a href="mailto:aleruete@gmail.com">aleruete@gmail.com</a><u></u></p>
-
-<p><i>Keywords</i>:citizen-science data, open-access biodiversity database, presence-only data, sampling effort, spatial bias, species distribution model, temporal bias</p>
-
-<p><o:p></o:p></p>
-
+### Running the Application
 <p>This interactive application exemplifies the use of three
 different algorithms to map the ignorance (i.e. bias and lack of sampling
 effort) found in the observations accessed through the Swedish LifeWatch biodiversity analysis portal
@@ -117,3 +103,7 @@ grid cell. On each subpanel you can set the algorithm can be set and O<sub>0.5</
 0.5) for the Inversed algorithm. For target species, a Step algorithm is added
 where any observation number below O<sub>0.5</sub> sets the ignorance score to
 0. Else the Step algorithm is equal to the Inversed algorithm.</p>
+
+### Authors and Contributors
+Application developed by Alejandro Ruete in Dec 2014.
+### Licence GNU v.3
