@@ -61,5 +61,5 @@ On the left panel you find options for the Reference taxonomic group and Target 
 
 ### Authors and Contributors
 Application developed by Alejandro Ruete in Dec 2014.
-DOI: dx.doi.org/10.5281/zenodo.17372
+DOI: dx.doi.org/10.5281/zenodo.17593
 ### Licence GNU v.3
