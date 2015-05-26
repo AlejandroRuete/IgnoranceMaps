@@ -2,7 +2,7 @@
 library(shiny)
 
 shinyUI(fluidPage(#theme = "bootstrap.css",
-  tags$head(tags$link(rel="shortcut icon", href="URL-to-favicon")),
+  tags$head(tags$link(rel="shortcut icon", href="/favicon.ico")),
   titlePanel("Ignorance maps for observations accessed via the Swedish LifeWatch"),
 
   fluidRow(
