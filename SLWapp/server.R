@@ -231,10 +231,12 @@ ignorInput <- reactive({
               par(mar=c(0,0,0,3),cex=1,las=0, tck=.5, bty="n")
               plot(dataset, zlim=c(0,dataset@data@max), bty="n", legend=FALSE, axes=FALSE)
               r.range <- c(dataset@data@min, dataset@data@max)
-              plot(Obs, legend.only=TRUE, zlim=c(0,dataset@data@max),
+              r.rangeseq<-seq(r.range[1], r.range[2],
+                              by=round((r.range[2]-r.range[1])/10,ifelse(r.range[2]>1000,-2,ifelse(r.range[2]>100,-1,0))))
+              plot(dataset, legend.only=TRUE, zlim=c(0,dataset@data@max),
                    legend.width=3, legend.shrink=0.75,
-                   axis.args=list(at=seq(r.range[1], r.range[2], round((r.range[2]-r.range[1])/10,ifelse(r.range[2]>1000,-2,-1))),
-                                  labels=seq(r.range[1], r.range[2], round((r.range[2]-r.range[1])/10,ifelse(r.range[2]>1000,-2,-1))),
+                   axis.args=list(at=r.rangeseq,
+                                  labels=r.rangeseq,
                                   cex.axis=1.5),
                    legend.args=list(text=ifelse(input$index==TRUE,paste(ifelse(input$trans!=2,"Obs Index","Log(Obs Index)")," for", as.character(input$dataset)),paste(ifelse(input$trans!=2,"No.","Log(No.)"),"of Obs for", as.character(input$dataset))),
                                    side=2, font=2, line=1.5, cex=1))
@@ -278,8 +280,8 @@ ignorInput <- reactive({
               #######
               fun="prod" #alt "geomean"
               par(mar=c(0,0,0,3),cex=1,las=0, tck=.05, bty="n")
-              plot(1-spp.psabs, zlim=c(0,1), bty="n", legend=FALSE, axes=FALSE,col=RedBlue)
-              plot(1-spp.psabs, legend.only=TRUE, zlim=c(0,1),col=RedBlue,
+              plot(1-spp.psabs, zlim=c(0,1), bty="n", legend=FALSE, axes=FALSE,col=GreyColors)
+              plot(1-spp.psabs, legend.only=TRUE, zlim=c(0,1),col=GreyColors,
                    legend.width=3, legend.shrink=0.75,
                    axis.args=list(at=seq(0, 1, .2),
                                   labels=seq(0, 1, .2),
@@ -296,7 +298,7 @@ ignorInput <- reactive({
               text(max(coordinates(dataset)[,1])-scale.lng/2,min(coordinates(dataset)[,2])+50000, labels=paste(scale.lng/1000, "km"),cex=1.5)
               legend("topleft", c(paste0("Certain ps.absence (", input$minAbs," - 1)"), paste0("Certain presence (", input$minPres," - 1)")),
                                  col=c(paste0(c("#FF0000","#00FF00"),input$alpha * 100)),
-                                 bty="n", pch= 15 )
+                                 bty="n", pch= 15, cex=1.5)
   }) #end outputPlot
 
 output$TransPlot <- renderPlot({
