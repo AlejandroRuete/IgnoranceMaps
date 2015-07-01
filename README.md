@@ -56,8 +56,8 @@ this later plot is reactive to the value set for <i>O</i><sub>0.5</sub>).
 
 <b>Options</b>
 
-On the left panel you find options for the Reference taxonomic group and Target species to be displayed. First, you can opt to use the raw observations as a measure of sampling effort or the Observation Index, a sampling effort relative to the number of species sampled in a particular grid cell. On each subpanel you can set the algorithm can be set and O<sub>0.5</sub> (the number of observations that are enough to reduce the ignorance score to 0.5) for the Inversed algorithm. For target species, a Step algorithm is added where any observation number below O<sub>0.5</sub> sets the ignorance score to
-0. Else the Step algorithm is equal to the Inversed algorithm.
+On the left panel you find options for the Reference taxonomic group and Target species to be displayed. First, you can opt to use the raw observations as a measure of sampling effort or the Observation Index, a sampling effort relative to the number of species sampled in a particular grid cell. On each subpanel you can set the algorithm can be set and O<sub>0.5</sub> (the number of observations that are enough to reduce the ignorance score to 0.5) for the Half-ignorance algorithm. For target species, a Step algorithm is added where any observation number below O<sub>0.5</sub> sets the ignorance score to
+0. Else the Step algorithm is equal to the Half-ignorance algorithm.
 
 ### Authors and Contributors
 Application developed by Alejandro Ruete in Dec 2014.
