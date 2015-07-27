@@ -3,8 +3,8 @@ Simple algorithms to display ignorance maps of raw data accessed from species ob
 The Swedish LifeWatch implementation
 
 
-This is an HTML interactive application compiled in R that accompanies the text:
-Displaying bias in sampling effort of data accessed from biodiversity databases using ignorance maps
+Here you can download an interactive HTML application compiled in R that accompanies the text:
+Ruete A. 2015. Displaying bias in sampling effort of data accessed from biodiversity databases using ignorance maps. Biodiversity Data Journal (in press).
 
 This interactive application exemplifies the use of three different algorithms to map the ignorance (i.e. bias and lack of sampling effort) found in the observations accessed through the Swedish LifeWatch biodiversity analysis portal <a href="http://www.swedishlifewatch.se">www.swedishlifewatch.se</a>.
 
