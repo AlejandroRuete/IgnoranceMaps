@@ -90,7 +90,7 @@ shinyUI(fluidPage(id="nav", theme = shinytheme("flatly"), windowTitle="Ignorance
 
       sliderInput(inputId ="alpha",
                    label = "Transparency",
-                   value = 0.3,
+                   value = 0.6,
                    min = 0.1,
                    max = 0.9,
                    step = 0.1

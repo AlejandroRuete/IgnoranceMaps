@@ -110,7 +110,7 @@ shinyUI(navbarPage("Ignorance Explorer", id="nav", theme = shinytheme("flatly"),
                     step = 1
         ),
         checkboxInput(inputId="NAplot",
-                      label="Use observations with year = NA?",
+                      label="Include observations with year = NA?",
                       value=TRUE
         )
         

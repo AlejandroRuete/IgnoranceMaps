@@ -251,7 +251,8 @@ output$TempIgn <- renderPlot({
       }
       legend("bottomleft", legend=c("Europe", CountriesAb[whichCount]), col=colCount[1:(length(chosenCount)+1)], 
              lwd=c(3,rep(2,length(chosenCount))),  bty = "n", ncol = 3, cex=0.8)
-      legend(input$time[1], 0.5, legend=c("Obs w/o year", "Time range"), title="Mean of:", col=colCount[1], pch=c(1,19),  bty="n", yjust=1.2, cex=0.8)
+      legend(input$time[1], 0.5, legend=c("Obsesrvations w/o year", "Selected years (density plots below)"), 
+             title="Mean over:", title.adj = 0, col=colCount[1], pch=c(1,19),  bty="n", yjust=1.2, cex=0.8)
     })
   }# end if
 })

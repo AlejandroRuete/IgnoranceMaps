@@ -6,6 +6,8 @@ library(maptools)
 Swe<-readShapePoly("data/Sweden Simple Sweref.shp", proj4string=CRS("+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
 GreyColors<-colorRampPalette(c("white", "black"),interpolate="spline", space="Lab")( 16 )
 RedBlue<-colorRampPalette(c("blue","white", "red"),interpolate="spline", space="Lab")( 11 )
+Topo<-terrain.colors(16)
+Topo[16]<-"#FFFFFFFF"
 
 Amp <- raster("data/Amp.tif")
 AmpR <- raster("data/Amp richness.tif")
@@ -211,7 +213,16 @@ ignorInput <- reactive({
       return(list(spp.psabs,spp.norm))
   }) # end reactive sppPA
 
-  output$ObsPlot <- renderPlot({
+sppOddsInput<-reactive({
+    spp<-spptargetInput()[[2]]
+    obs <- datasetInput()
+    rich <- richnessInput()
+    spp.odd<- overlay(spp, obs, rich, fun=function(x,y,z){return(x/(y/z))})
+    return(spp.odd)
+}) # end reactive sppPA
+  
+  
+  output$ObsPlot <- renderPlot(height = 800, expr = {
               par(mfrow=c(1,4), oma=c(0,0,1,1))
               dataset <- datasetInput()
               rich <- richnessInput()
@@ -229,33 +240,35 @@ ignorInput <- reactive({
               CI<-ignorInput()
               ########
               par(mar=c(0,0,0,3),cex=1,las=0, tck=.5, bty="n")
-              plot(dataset, zlim=c(0,dataset@data@max), bty="n", legend=FALSE, axes=FALSE)
+              plot(dataset, zlim=c(0,dataset@data@max), bty="n", legend=FALSE, axes=FALSE, col=rev(Topo))
               r.range <- c(dataset@data@min, dataset@data@max)
               r.rangeseq<-seq(r.range[1], r.range[2],
                               by=round((r.range[2]-r.range[1])/10,ifelse(r.range[2]>1000,-2,ifelse(r.range[2]>100,-1,0))))
-              plot(dataset, legend.only=TRUE, zlim=c(0,dataset@data@max),
-                   legend.width=3, legend.shrink=0.75,
+              # par(mar=c(0,0,8,3))
+              plot(dataset, legend.only=TRUE, zlim=c(0,dataset@data@max), col=rev(Topo),
+                   legend.width=3, legend.shrink=0.5,
                    axis.args=list(at=r.rangeseq,
                                   labels=r.rangeseq,
                                   cex.axis=1.5),
                    legend.args=list(text=ifelse(input$index==TRUE,paste(ifelse(input$trans!=2,"Obs Index","Log(Obs Index)")," for", as.character(input$dataset)),paste(ifelse(input$trans!=2,"No.","Log(No.)"),"of Obs for", as.character(input$dataset))),
                                    side=2, font=2, line=1.5, cex=1))
-              plot(Swe, add=TRUE)
+              # par(mar=c(0,0,0,3))
+              plot(Swe, lwd=1.5, border="grey50", add=TRUE)
               scale.lng<-100000 #(m)
               segments(max(coordinates(dataset)[,1]),min(coordinates(dataset)[,2]),max(coordinates(dataset)[,1])-scale.lng,min(coordinates(dataset)[,2]),lwd=2)
               text(max(coordinates(dataset)[,1])-scale.lng/2,min(coordinates(dataset)[,2])+50000, labels=paste(scale.lng/1000, "km"),cex=1.5)
 
               #######
               par(mar=c(0,0,0,3),cex=1,las=0, tck=.05, bty="n")
-              plot(CI, zlim=c(0,1), bty="n", legend=FALSE, axes=FALSE,col=RedBlue)
+              plot(CI, zlim=c(0,1), bty="n", legend=FALSE, axes=FALSE, col=RedBlue)
               plot(CI, legend.only=TRUE, zlim=c(0,1),col=RedBlue,
-                   legend.width=3, legend.shrink=0.75,
+                   legend.width=3, legend.shrink=0.5,
                    axis.args=list(at=seq(0, 1, .2),
                                   labels=seq(0, 1, .2),
                                   cex.axis=1.5),
                    legend.args=list(text=paste("Ignorance for", as.character(input$dataset)),
                                    side=2, font=2, line=1.5, cex=1))
-              plot(Swe, add=TRUE)
+              plot(Swe, lwd=1.5, add=TRUE)
               scale.lng<-100000 #(m)
               segments(max(coordinates(dataset)[,1]),min(coordinates(dataset)[,2]),max(coordinates(dataset)[,1])-scale.lng,min(coordinates(dataset)[,2]),lwd=2)
               text(max(coordinates(dataset)[,1])-scale.lng/2,min(coordinates(dataset)[,2])+50000, labels=paste(scale.lng/1000, "km"),cex=1.5)
@@ -266,33 +279,36 @@ ignorInput <- reactive({
               par(mar=c(0,0,0,3),cex=1,las=0, tck=.05, bty="n")
               plot(spp.psabs, zlim=c(0,1), bty="n", legend=FALSE, axes=FALSE,col=RedBlue)
               plot(spp.psabs, legend.only=TRUE, zlim=c(0,1),col=RedBlue,
-                   legend.width=3, legend.shrink=0.75,
+                   legend.width=3, legend.shrink=0.5,
                    axis.args=list(at=seq(0, 1, .2),
                                   labels=seq(0, 1, .2),
                                   cex.axis=1.5),
                    legend.args=list(text=paste("Ps. absence of",spptargetInput()[[1]]),
                                    side=2, font=2, line=1.5, cex=1))
-              plot(Swe, add=TRUE)
+              plot(Swe, lwd=1.5, add=TRUE)
               scale.lng<-100000 #(m)
               segments(max(coordinates(dataset)[,1]),min(coordinates(dataset)[,2]),max(coordinates(dataset)[,1])-scale.lng,min(coordinates(dataset)[,2]),lwd=2)
               text(max(coordinates(dataset)[,1])-scale.lng/2,min(coordinates(dataset)[,2])+50000, labels=paste(scale.lng/1000, "km"),cex=1.5)
 
               #######
               fun="prod" #alt "geomean"
+              sppOdds<-sppOddsInput()
+              maxOdds<-ceiling(max(sppOdds[], na.rm = TRUE))
+              oddstep<-ifelse(maxOdds/5 < 1, round(maxOdds/5, 1), round(maxOdds/5))
               par(mar=c(0,0,0,3),cex=1,las=0, tck=.05, bty="n")
-              plot(1-spp.psabs, zlim=c(0,1), bty="n", legend=FALSE, axes=FALSE,col=GreyColors)
-              plot(1-spp.psabs, legend.only=TRUE, zlim=c(0,1),col=GreyColors,
-                   legend.width=3, legend.shrink=0.75,
-                   axis.args=list(at=seq(0, 1, .2),
-                                  labels=seq(0, 1, .2),
+              plot(sppOdds, zlim=c(0,maxOdds), bty="n", legend=FALSE, axes=FALSE,col=GreyColors)
+              plot(sppOdds, legend.only=TRUE, zlim=c(0,maxOdds), col=GreyColors,
+                   legend.width=3, legend.shrink=0.5,
+                   axis.args=list(at=seq(0, maxOdds, oddstep),
+                                  labels=seq(0, maxOdds, oddstep),
                                   cex.axis=1.5),
-                   legend.args=list(text=paste("Presence of",spptargetInput()[[1]]),
-                                   side=2, font=2, line=1.5, cex=1))
+                   legend.args=list(text=paste("Population Size Index of",spptargetInput()[[1]]),
+                                    side=2, font=2, line=1.5, cex=1))
               plot(overlay(spp.psabs,1-CI,fun=fun),
                           zlim=c(input$minAbs,1),col="#FF0000",alpha=input$alpha, legend=FALSE, add=T)
               plot(overlay(1-spp.psabs,1-CI,fun=fun), #1-spp.psabs,
                           zlim=c(input$minPres,1),col="#00FF00",alpha=input$alpha,legend=FALSE, add=T)
-              plot(Swe, add=TRUE)
+              plot(Swe, lwd=1.5, border="grey50", add=TRUE)
               scale.lng<-100000 #(m)
               segments(max(coordinates(dataset)[,1]),min(coordinates(dataset)[,2]),max(coordinates(dataset)[,1])-scale.lng,min(coordinates(dataset)[,2]),lwd=2)
               text(max(coordinates(dataset)[,1])-scale.lng/2,min(coordinates(dataset)[,2])+50000, labels=paste(scale.lng/1000, "km"),cex=1.5)
