@@ -3,7 +3,7 @@ require(rgdal)
 library(maptools)
 
 
-SweB10k<-readShapePoly("data/Sweden_TerritorySWEREFF99 buffer10k.shp", proj4string=CRS("+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
+Swe<-readShapePoly("data/Sweden Simple Sweref.shp", proj4string=CRS("+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"))
 GreyColors<-colorRampPalette(c("white", "black"),interpolate="spline", space="Lab")( 16 )
 RedBlue<-colorRampPalette(c("blue","white", "red"),interpolate="spline", space="Lab")( 11 )
 
@@ -240,7 +240,7 @@ ignorInput <- reactive({
                                   cex.axis=1.5),
                    legend.args=list(text=ifelse(input$index==TRUE,paste(ifelse(input$trans!=2,"Obs Index","Log(Obs Index)")," for", as.character(input$dataset)),paste(ifelse(input$trans!=2,"No.","Log(No.)"),"of Obs for", as.character(input$dataset))),
                                    side=2, font=2, line=1.5, cex=1))
-              plot(SweB10k, add=TRUE)
+              plot(Swe, add=TRUE)
               scale.lng<-100000 #(m)
               segments(max(coordinates(dataset)[,1]),min(coordinates(dataset)[,2]),max(coordinates(dataset)[,1])-scale.lng,min(coordinates(dataset)[,2]),lwd=2)
               text(max(coordinates(dataset)[,1])-scale.lng/2,min(coordinates(dataset)[,2])+50000, labels=paste(scale.lng/1000, "km"),cex=1.5)
@@ -255,7 +255,7 @@ ignorInput <- reactive({
                                   cex.axis=1.5),
                    legend.args=list(text=paste("Ignorance for", as.character(input$dataset)),
                                    side=2, font=2, line=1.5, cex=1))
-              plot(SweB10k, add=TRUE)
+              plot(Swe, add=TRUE)
               scale.lng<-100000 #(m)
               segments(max(coordinates(dataset)[,1]),min(coordinates(dataset)[,2]),max(coordinates(dataset)[,1])-scale.lng,min(coordinates(dataset)[,2]),lwd=2)
               text(max(coordinates(dataset)[,1])-scale.lng/2,min(coordinates(dataset)[,2])+50000, labels=paste(scale.lng/1000, "km"),cex=1.5)
@@ -270,9 +270,9 @@ ignorInput <- reactive({
                    axis.args=list(at=seq(0, 1, .2),
                                   labels=seq(0, 1, .2),
                                   cex.axis=1.5),
-                   legend.args=list(text=paste("Ps.absence of",spptargetInput()[[1]]),
+                   legend.args=list(text=paste("Ps. absence of",spptargetInput()[[1]]),
                                    side=2, font=2, line=1.5, cex=1))
-              plot(SweB10k, add=TRUE)
+              plot(Swe, add=TRUE)
               scale.lng<-100000 #(m)
               segments(max(coordinates(dataset)[,1]),min(coordinates(dataset)[,2]),max(coordinates(dataset)[,1])-scale.lng,min(coordinates(dataset)[,2]),lwd=2)
               text(max(coordinates(dataset)[,1])-scale.lng/2,min(coordinates(dataset)[,2])+50000, labels=paste(scale.lng/1000, "km"),cex=1.5)
@@ -292,7 +292,7 @@ ignorInput <- reactive({
                           zlim=c(input$minAbs,1),col="#FF0000",alpha=input$alpha, legend=FALSE, add=T)
               plot(overlay(1-spp.psabs,1-CI,fun=fun), #1-spp.psabs,
                           zlim=c(input$minPres,1),col="#00FF00",alpha=input$alpha,legend=FALSE, add=T)
-              plot(SweB10k, add=TRUE)
+              plot(Swe, add=TRUE)
               scale.lng<-100000 #(m)
               segments(max(coordinates(dataset)[,1]),min(coordinates(dataset)[,2]),max(coordinates(dataset)[,1])-scale.lng,min(coordinates(dataset)[,2]),lwd=2)
               text(max(coordinates(dataset)[,1])-scale.lng/2,min(coordinates(dataset)[,2])+50000, labels=paste(scale.lng/1000, "km"),cex=1.5)
@@ -316,11 +316,12 @@ output$TransPlot <- renderPlot({
               }
               ## Density plot
               par(mar=c(4,4,3,2),cex=1)
-              plot(density(dataset.D, from=0), #na.rm=T,
+              #plot(density(dataset.D, from=0), #na.rm=T,
+              hist(dataset.D, from=0, col="lightblue", #na.rm=T,
                                       xlab=ifelse(input$index==TRUE,paste(ifelse(input$trans!=2,"Obs Index","Log(Obs Index)")," for", as.character(input$dataset)),paste(ifelse(input$trans!=2,"No.","Log(No.)"),"of Obs for", as.character(input$dataset))),
                                       #paste(ifelse(input$trans!=2,"No.","Log(No.)"),"of Observations for", as.character(input$dataset)),
-                                      ylab="Density",
-                                      main=paste("Density for", as.character(input$dataset)))
+                                      ylab="No. cells",
+                                      main=paste("No. records for", as.character(input$dataset)))
 
 
               ## Species Discovery plot
@@ -340,7 +341,7 @@ output$TransPlot <- renderPlot({
                                     return(norm)
               }
               par(mar=c(4,4,3,2),cex=1)
-              curve(transnorm(x,maxX), from=0,to=maxX, n = 1001, ylim=c(0,1),
+              curve(transnorm(x,maxX), from=0,to=maxX, n = 1001, ylim=c(0,1), lwd=2,
                                     xlab=ifelse(input$index==TRUE,paste("Obs Index for", as.character(input$dataset)),paste("No. of Obs for", as.character(input$dataset))),
                                     #paste("No. of Observations for", as.character(input$dataset)), #paste(ifelse(input$trans!=2,"No.","Log(No.)"),"of Observations for", as.character(input$dataset)),
                                     ylab="Ignorance score",
@@ -352,11 +353,11 @@ output$TransPlot <- renderPlot({
                       logCI<-1 -(logx.norm)
                       return(logCI)
                       }
-              curve(translog(x,1), col=4, add=T)
+              curve(translog(x,1), col=4, lwd=2,add=T)
 
               obs50<-input$obs50
               par(mar=c(4,4,3,2),cex=1)
-              curve(obs50/(x+obs50), add=T, col=2)
+              curve(obs50/(x+obs50), lwd=2, add=T, col=2)
               abline(v=1, lty=3)
               abline(v=obs50, lty=3, col=2)
               abline(h=0.5, lty=3, col=2)
@@ -364,7 +365,7 @@ output$TransPlot <- renderPlot({
 #                               LogNormalized = 1 - log(x+1)/max( log(x+1) ),
 #                               Inversed = O[0.5]/(x+O[0.5]))
               legend("topright", legend=c("Normalized","Log-Normalized","Half-ignorance"),
-                                          lty=1, col=c("black","blue","red"),bty="n")
+                                          lty=1, lwd=2, col=c("black","blue","red"),bty="n")
   }) #end outputPlot
 
 }) #end server

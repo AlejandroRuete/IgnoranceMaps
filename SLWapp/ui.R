@@ -1,17 +1,18 @@
 ## UI ArtData
 library(shiny)
+library(shinythemes)
 
-shinyUI(fluidPage(#theme = "bootstrap.css",
-  tags$head(tags$link(rel="shortcut icon", href="/favicon.ico")),
+shinyUI(fluidPage(id="nav", theme = shinytheme("flatly"), windowTitle="Ignorance Explorer", #theme = "bootstrap.css",
+#shinyUI(navbarPage("Ignorance Explorer", id="nav", theme = shinytheme("flatly"), windowTitle="Ignorance Explorer",
+  tags$head(tags$link(rel="shortcut icon", href="/favicon.ico"),  includeCSS("styles.css")),
   titlePanel("Ignorance maps for observations accessed via the Swedish LifeWatch"),
 
   fluidRow(
-    column(2,
+    column(3,
 
   wellPanel(
-      strong("Reference Taxonomic Group"),
       selectInput(inputId = "dataset",
-                  label = "",
+                  label = h4("Reference Taxonomic Group"),
                   choices = c("Amphibians" = "Amphibia",
                               "Birds" = "Aves",
                               "Butterflies" = "Papilionoidea",
@@ -19,12 +20,13 @@ shinyUI(fluidPage(#theme = "bootstrap.css",
                               "Harvestmen" = "Opilions",
                               "Dragonflies" = "Odonata",
                               "Vascular Plants" = "Tracheophyta"),
-                  selected = "Amphibia"
+                  selected = "Amphibia",
+                  width = 150
                  ),
 
       checkboxInput(inputId="index",
                     label="Observation index (N/R)",
-                    value=FALSE
+                    value=TRUE
       ),
 
       radioButtons(inputId = "trans",
@@ -32,23 +34,23 @@ shinyUI(fluidPage(#theme = "bootstrap.css",
                   choices = c("Normalization" = 1,
                               "Log-Normalization" = 2,
                               "Half-ignorance" = 3),
-                  selected = 1,
+                  selected = 3
                   ),
       numericInput(inputId ="obs50",
-                   label = "O[0.5]",
+                   label =  h4("O",tags$sub("0.5")),
                    value = 1,
                    min = .1,
                    max = 100,
-                   step = .1
-                   )#,
-  ),
-  wellPanel(
-      strong("Target Species"),
+                   step = .1,
+                   width = 150
+                   ),
+
       selectInput(inputId = "target",
-                  label = "",
+                  label = h4("Target Species"),
                   choices = c("Common"="Common",
                               "Rare" = "Rare"),
-                  selected = "Common"
+                  selected = "Common",
+                  width = 150
                  ),
       radioButtons(inputId = "trans2",
                   label = "Algorithms",
@@ -56,14 +58,15 @@ shinyUI(fluidPage(#theme = "bootstrap.css",
                               "Log-Normalization" = 2,
                               "Half-ignorance" = 3,
                               "Step" = 4),
-                  selected = 1,
+                  selected = 3
                   ),
       numericInput(inputId ="obs502",
-                   label = "O[0.5]",
+                   label =  h4("O",tags$sub("0.5")),
                    value = 1,
                    min = .1,
                    max = 100,
-                   step = .1
+                   step = .1,
+                   width = 150
                    )#,
       ), #end wellPanel
 
@@ -95,7 +98,7 @@ shinyUI(fluidPage(#theme = "bootstrap.css",
   ) #end wellpanel
   ), # end column 2
 
-  column(10,
+  column(9,
     tabsetPanel(
         tabPanel("Maps", plotOutput("ObsPlot")),
         tabPanel("Data plots", plotOutput("TransPlot")),
