@@ -1,6 +1,6 @@
-Simple algorithms to display ignorance maps of raw observations  accessed from species observation databases
-====================================================================================================================
-This READ ME needs to be updated...
+Simple algorithms to display ignorance maps of raw data accessed from species observation databases
+=======================================================================================================================
+The Swedish LifeWatch implementation
 
 
 Here you can download an interactive HTML application compiled in R that accompanies the text:
