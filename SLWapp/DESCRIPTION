@@ -5,3 +5,4 @@ License: GPL-3
 DisplayMode: Normal
 Tags: getting-started
 Type: Shiny
+Imports: shiny, shinythemes, terra
